@@ -1,5 +1,54 @@
 <div>
-	<form [formGroup]>
-
+	<form [formGroup]="sessionForm" enctype="multipart/form-data" method="post">
+		<div>
+			<mat-form-field>
+				<input matInput placeholder="Session Name" formControlName="name" required>
+				<mat-error *ngIf="checkError('name')">Session Name is required</mat-error>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<input matInput placeholder="Description" formControlName="desc" required>
+				<mat-error *ngIf="checkError('name')">Description is required</mat-error>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<input matInput [matDatepicker]="treatDatePicker" placeholder="Treat Date" formControlName="treatDate"
+					required>
+				<mat-error *ngIf="checkError('name')">Treat Date is required</mat-error>
+				<mat-datepicker-toggle matSuffix [for]="treatDatePicker"></mat-datepicker-toggle>
+				<mat-datepicker #treatDatePicker></mat-datepicker>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<input matInput [matDatepicker]="cutoffDatePicker" placeholder="Cutoff Date"
+					formControlName="cutoffDate" required>
+				<mat-error *ngIf="checkError('name')">Cutoff Date is required</mat-error>
+				<mat-datepicker-toggle matSuffix [for]="cutoffDatePicker"></mat-datepicker-toggle>
+				<mat-datepicker #cutoffDatePicker></mat-datepicker>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<input matInput placeholder="Menu Image" formControlName="menuImage" required>
+				<input type="file" (change)="onFileChange($event.target.files)" hidden multiple #fileInput>
+				<mat-error *ngIf="checkError('name')">Menu Image is required</mat-error>
+			</mat-form-field>
+			<button mat-flat-button color="accent" type="button" (click)="fileInput.click()">
+				<mat-icon>folder</mat-icon>
+			</button>
+		</div>
+		<div>
+			<mat-checkbox formControlName="isPrivate" (change)="toggleDisable($event)">This is a private session
+			</mat-checkbox>
+		</div>
+		<div>
+			<mat-form-field>
+				<input matInput placeholder="Password" type="password" formControlName="password">
+			</mat-form-field>
+		</div>
+		<button mat-flat-button color="accent" type="button" (click)="onSubmit()">Submit</button>
 	</form>
 </div>
