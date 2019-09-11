@@ -14,34 +14,42 @@ export class SessionService {
 	) { }
 
 	public addSession(values: TeaSessionModel) {
-		console.log(JSON.stringify(values));
 		const headers = new HttpHeaders();
 		headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-		// const params = new URLSearchParams();
-		// params.append('name', values.name);
-		// params.append('desc', values.desc);
-		// params.append('treatDate', values.treatDate);
-		// params.append('cutoffDate', values.cutoffDate);
-		// // params.append('menuImage', values.menuImage);
-		// params.append('isPrivate', values.isPrivate);
-		// params.
-		// params.append('name', values.name);
-		return this.http.post(`${SessionService.URL}/rest/session/add`, JSON.stringify(values), { headers }).subscribe(r => { console.log(r); });
+		const formData: FormData = new FormData();
 
-		// .map(res => res.json());
+		formData.append('name', values.name);
+		formData.append('desc', values.desc);
+		formData.append('treatDate', values.treatDate);
+		formData.append('cutoffDate', values.cutoffDate);
+		formData.append('menuImage', values.menuImage);
+		formData.append('name', values.name);
+		formData.append('name', values.name);
 
-
-		// return this.http.post(`${SessionService.URL}/rest/session/add`);
+		return this.http.post(`${SessionService.URL}/rest/session/add`, formData, { headers }).subscribe(r => { console.log(r); });
 	}
 
-	addTest(hello: string, world: number) {
-		const headers = new HttpHeaders();
-		headers.append('Content-Type', 'application/x-www-form-urlencoded');
+	public uploadImages(files: FileList) {
+		const reqArr = [];
+		Array.from(files).map(file => reqArr.push(file));
+		reqArr.map(file => {
+			const formData = new FormData();
+			formData.append('file', file);
+			this.http.post(`${SessionService.URL}/rest/session/upload`, formData).subscribe(res => {
+				console.log(res);
+			},
+				err => {
+					console.log(err);
+				});
+		});
+	}
 
-		const params = new URLSearchParams();
-		params.append('hello', hello);
-		params.append('world', world as any as string);
-		return this.http.post(`${SessionService.URL}/rest/test/add-test`, params.toString(), { headers }).subscribe(res => { console.log(res); });
+	getSession(teaSessionId: number) {
+
+	}
+
+	getPrivateSession(privateCode: string) {
+
 	}
 }

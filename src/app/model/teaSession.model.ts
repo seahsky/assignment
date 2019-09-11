@@ -5,11 +5,15 @@ export class TeaSessionModel {
 		private Desc: string,
 		private TreatDate: string,
 		private CutoffDate: string,
-		private MenuImage: FileList,
+		private MenuImage: string,
 		private IsPrivate: boolean,
-		private Password: string
+		private Password: string,
+		private PrivateCode: string
 	) { }
 
+	get teaSessionId() {
+		return this.TeaSessionId;
+	}
 	get name() {
 		return this.Name;
 	}
@@ -30,5 +34,8 @@ export class TeaSessionModel {
 	}
 	get password() {
 		return this.Password;
+	}
+	get privateCode() {
+		return this.PrivateCode;
 	}
 }

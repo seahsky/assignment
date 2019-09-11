@@ -1,5 +1,5 @@
 <div>
-	<form [formGroup]="sessionForm" enctype="multipart/form-data" method="post">
+	<form [formGroup]="sessionForm" enctype="multipart/form-data">
 		<div>
 			<mat-form-field>
 				<input matInput placeholder="Session Name" formControlName="name" required>
@@ -9,14 +9,14 @@
 		<div>
 			<mat-form-field>
 				<input matInput placeholder="Description" formControlName="desc" required>
-				<mat-error *ngIf="checkError('name')">Description is required</mat-error>
+				<mat-error *ngIf="checkError('desc')">Description is required</mat-error>
 			</mat-form-field>
 		</div>
 		<div>
 			<mat-form-field>
 				<input matInput [matDatepicker]="treatDatePicker" placeholder="Treat Date" formControlName="treatDate"
 					required>
-				<mat-error *ngIf="checkError('name')">Treat Date is required</mat-error>
+				<mat-error *ngIf="checkError('treatDate')">Treat Date is required</mat-error>
 				<mat-datepicker-toggle matSuffix [for]="treatDatePicker"></mat-datepicker-toggle>
 				<mat-datepicker #treatDatePicker></mat-datepicker>
 			</mat-form-field>
@@ -25,16 +25,18 @@
 			<mat-form-field>
 				<input matInput [matDatepicker]="cutoffDatePicker" placeholder="Cutoff Date"
 					formControlName="cutoffDate" required>
-				<mat-error *ngIf="checkError('name')">Cutoff Date is required</mat-error>
+				<mat-error *ngIf="checkError('cutoffDate')">Cutoff Date is required</mat-error>
 				<mat-datepicker-toggle matSuffix [for]="cutoffDatePicker"></mat-datepicker-toggle>
 				<mat-datepicker #cutoffDatePicker></mat-datepicker>
 			</mat-form-field>
 		</div>
 		<div>
 			<mat-form-field>
-				<input matInput placeholder="Menu Image" formControlName="menuImage" required>
-				<input type="file" (change)="onFileChange($event.target.files)" hidden multiple #fileInput>
-				<mat-error *ngIf="checkError('name')">Menu Image is required</mat-error>
+				<input matInput placeholder="Menu Image" formControlName="menuImageName" (click)="fileInput.click()"
+					required>
+				<input type="file" (change)="onFileChange($event.target.files)" formControlName="menuImage" hidden
+					multiple #fileInput>
+				<mat-error *ngIf="checkError('menuImageName')">Menu Image is required</mat-error>
 			</mat-form-field>
 			<button mat-flat-button color="accent" type="button" (click)="fileInput.click()">
 				<mat-icon>folder</mat-icon>
@@ -49,6 +51,6 @@
 				<input matInput placeholder="Password" type="password" formControlName="password">
 			</mat-form-field>
 		</div>
-		<button mat-flat-button color="accent" type="button" (click)="onSubmit()">Submit</button>
+		<button mat-flat-button color="accent" type="button" (click)="onSubmit()">Add Session</button>
 	</form>
 </div>

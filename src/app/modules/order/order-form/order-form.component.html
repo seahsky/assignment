@@ -1,0 +1,22 @@
+<div>
+	<form [formGroup]="orderForm">
+		<div>
+			<mat-form-field>
+				<input matInput placeholder="Item Name" formControlName="itemName" required>
+				<mat-error *ngIf="checkError('itemName')">Item Name is required</mat-error>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<input matInput placeholder="Quantity" type="number" formControlName="quantity" required>
+				<mat-error *ngIf="checkError('quantity')">Quantiy is required</mat-error>
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<textarea matInput placeholder="Remark" formControlName="remark" cols="30" rows="10"></textarea>
+			</mat-form-field>
+		</div>
+		<button mat-flat-button color="accent" type="button" (click)="onSubmit()">Add Order</button>
+	</form>
+</div>
