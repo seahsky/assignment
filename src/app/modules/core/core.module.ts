@@ -4,14 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import { HeaderComponent } from './header/header.component';
-import { SessionFormComponent } from '../session/session-form/session-form.component';
-
 
 @NgModule({
 	declarations: [
-		HeaderComponent,
-		SessionFormComponent
 	],
 	imports: [
 		CommonModule,
@@ -23,9 +18,7 @@ import { SessionFormComponent } from '../session/session-form/session-form.compo
 		CommonModule,
 		MaterialModule,
 		ReactiveFormsModule,
-		HttpClientModule,
-		HeaderComponent,
-		SessionFormComponent
+		HttpClientModule
 	]
 })
 export class CoreModule { }

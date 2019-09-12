@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
-import { SessionFormComponent } from './modules/session/session-form/session-form.component';
 
 export const routes: Routes = [
-	{ path: '', component: SessionFormComponent }
+	{ path: 'home', loadChildren: './modules/home/home.module#HomeModule' },
+
+	{ path: '', redirectTo: 'home', pathMatch: 'full' },
+	{ path: '**', redirectTo: 'home' }
 ];
