@@ -66,7 +66,7 @@ export class SessionFormComponent implements OnInit {
 	onSubmit() {
 		this.sessionForm.value.createdBy = 1;
 		if (this.sessionForm.get('menuImage').value !== null) {
-			this.sessionService.uploadImages(this.sessionForm.get('menuImage').value);
+			// this.sessionService.uploadImages(this.sessionForm.get('menuImage').value);
 			this.sessionService.addSession(this.sessionForm.value as TeaSessionModel);
 		}
 	}

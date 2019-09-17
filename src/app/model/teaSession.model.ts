@@ -5,10 +5,11 @@ export class TeaSessionModel {
 		private Desc: string,
 		private TreatDate: string,
 		private CutoffDate: string,
-		private MenuImage: string,
+		private MenuImageName: string,
 		private IsPrivate: boolean,
 		private Password: string,
-		private PrivateCode: string
+		private PrivateCode: string,
+		private CreatedBy: number
 	) { }
 
 	get teaSessionId() {
@@ -26,8 +27,8 @@ export class TeaSessionModel {
 	get cutoffDate() {
 		return this.CutoffDate;
 	}
-	get menuImage() {
-		return this.MenuImage;
+	get menuImageName() {
+		return this.MenuImageName;
 	}
 	get isPrivate() {
 		return this.IsPrivate;
@@ -37,5 +38,12 @@ export class TeaSessionModel {
 	}
 	get privateCode() {
 		return this.PrivateCode;
+	}
+	get createdBy() {
+		return this.CreatedBy;
+	}
+
+	set createdBy(createdBy: number) {
+		this.CreatedBy = createdBy;
 	}
 }

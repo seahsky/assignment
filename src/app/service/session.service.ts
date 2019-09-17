@@ -17,17 +17,9 @@ export class SessionService {
 		const headers = new HttpHeaders();
 		headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-		const formData: FormData = new FormData();
+		values.createdBy = 1;
 
-		formData.append('name', values.name);
-		formData.append('desc', values.desc);
-		formData.append('treatDate', values.treatDate);
-		formData.append('cutoffDate', values.cutoffDate);
-		formData.append('menuImage', values.menuImage);
-		formData.append('name', values.name);
-		formData.append('name', values.name);
-
-		return this.http.post(`${SessionService.URL}/rest/session/add`, formData, { headers }).subscribe(r => { console.log(r); });
+		return this.http.post(`${SessionService.URL}/rest/session/add`, values, { headers }).subscribe(r => { console.log(r); });
 	}
 
 	public uploadImages(files: FileList) {

@@ -34,8 +34,7 @@
 			<mat-form-field>
 				<input matInput placeholder="Menu Image" formControlName="menuImageName" (click)="fileInput.click()"
 					required>
-				<input type="file" (change)="onFileChange($event.target.files)" formControlName="menuImage" hidden
-					multiple #fileInput>
+				<input type="file" (change)="onFileChange($event.target.files)" hidden multiple #fileInput>
 				<mat-error *ngIf="checkError('menuImageName')">Menu Image is required</mat-error>
 			</mat-form-field>
 			<button mat-flat-button color="accent" type="button" (click)="fileInput.click()">
