@@ -1,0 +1,27 @@
+<mat-card>
+	<mat-card-title>{{session.name}}'s Session</mat-card-title>
+
+	<mat-list>
+		<mat-list-item>
+			<h3 mat-line>Description</h3>
+			<p mat-line>{{session.desc}}</p>
+		</mat-list-item>
+		<mat-list-item>
+			<h3 mat-line>Treat Date</h3>
+			<p mat-line>{{session.treatDate}}</p>
+		</mat-list-item>
+		<mat-list-item>
+			<h3 mat-line>Cutoff Date</h3>
+			<p mat-line>{{session.cutoffDate}}</p>
+		</mat-list-item>
+		<mat-list-item>
+			<h3 mat-line>Menu Image</h3>
+			<img src="" alt="asdasd">
+		</mat-list-item>
+	</mat-list>
+
+	<mat-card-actions>
+		<button mat-flat-button color="primary" class="new-button" type="button" (click)="openDialog()">Place
+			Order</button>
+	</mat-card-actions>
+</mat-card>

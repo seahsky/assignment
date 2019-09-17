@@ -8,6 +8,7 @@ import { SessionAddDoneComponent } from './session-add-done/session-add-done.com
 import { SessionFormComponent } from './session-form/session-form.component';
 import { SessionListComponent } from './session-list/session-list.component';
 import { SessionComponent } from './session.component';
+import { SessionDetailComponent } from './session-detail/session-detail.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SessionComponent } from './session.component';
 		SessionAddDoneComponent,
 		SessionFormComponent,
 		SessionListComponent,
-		SessionComponent
+		SessionComponent,
+		SessionDetailComponent
 	],
 	imports: [
 		CommonModule,
