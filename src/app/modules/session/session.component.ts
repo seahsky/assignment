@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { SessionFormComponent } from './session-form/session-form.component';
 
 @Component({
 	selector: 'app-session',
@@ -10,7 +12,8 @@ export class SessionComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private dialog: MatDialog
 	) { }
 
 	ngOnInit() {
@@ -18,7 +21,10 @@ export class SessionComponent implements OnInit {
 
 	onClick() {
 		console.log(this.route);
-		this.router.navigate([{ outlets: { sub: 'asd' } }]);
+	}
+
+	openDialog() {
+		this.dialog.open(SessionFormComponent);
 	}
 
 }

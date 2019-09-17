@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { SessionFormComponent } from '../session-form/session-form.component';
 
 
 const datas = [
@@ -24,7 +26,8 @@ export class SessionListComponent implements OnInit {
 
 	constructor(
 		private router: Router,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		private dialog: MatDialog
 	) { }
 
 	ngOnInit() {
@@ -35,7 +38,11 @@ export class SessionListComponent implements OnInit {
 
 	onClick() {
 		console.log(this.route);
-		this.router.navigate([{ outlets: { sub: ['../asd'] } }], { relativeTo: this.route });
+		this.router.navigate([{ outlets: { sub: ['./asd'] } }], { relativeTo: this.route });
+	}
+
+	openDialog() {
+		this.dialog.open(SessionFormComponent);
 	}
 
 }

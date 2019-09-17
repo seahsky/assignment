@@ -9,9 +9,9 @@ const routes: Routes = [
 	{
 		path: '', component: SessionComponent, children: [
 			{ path: '', component: SessionListComponent },
+			{ path: 'form', component: SessionFormComponent }
 		]
 	},
-	{ path: 'asd', component: SessionFormComponent, outlet: 'sub' }
 ];
 
 @NgModule({
