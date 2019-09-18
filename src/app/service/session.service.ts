@@ -21,9 +21,11 @@ export class SessionService {
 	}
 
 	public uploadImages(files: FileList) {
+		console.log(files);
 		const reqArr = [];
 		Array.from(files).map(file => reqArr.push(file));
 		reqArr.map(file => {
+			console.log(file);
 			const formData = new FormData();
 			formData.append('file', file);
 			console.log(formData);
