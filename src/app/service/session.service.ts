@@ -1,6 +1,6 @@
+import { SessionModel } from './../model/session.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TeaSessionModel } from '../model/teaSession.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -13,13 +13,11 @@ export class SessionService {
 		private http: HttpClient
 	) { }
 
-	public addSession(values: TeaSessionModel) {
+	public addSession(session: SessionModel) {
 		const headers = new HttpHeaders();
 		headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
-		values.createdBy = 1;
-
-		return this.http.post(`${SessionService.URL}/rest/session/add`, values, { headers }).subscribe(r => { console.log(r); });
+		return this.http.post(`${SessionService.URL}/rest/session/add`, session, { headers }).subscribe(r => { console.log(r); });
 	}
 
 	public uploadImages(files: FileList) {
@@ -28,6 +26,7 @@ export class SessionService {
 		reqArr.map(file => {
 			const formData = new FormData();
 			formData.append('file', file);
+			console.log(formData);
 			this.http.post(`${SessionService.URL}/rest/session/upload`, formData).subscribe(res => {
 				console.log(res);
 			},

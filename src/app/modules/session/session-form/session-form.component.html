@@ -8,8 +8,8 @@
 		</div>
 		<div>
 			<mat-form-field>
-				<input matInput placeholder="Description" formControlName="desc" required>
-				<mat-error *ngIf="checkError('desc')">Description is required</mat-error>
+				<input matInput placeholder="Description" formControlName="description" required>
+				<mat-error *ngIf="checkError('description')">Description is required</mat-error>
 			</mat-form-field>
 		</div>
 		<div>
@@ -32,10 +32,10 @@
 		</div>
 		<div>
 			<mat-form-field>
-				<input matInput placeholder="Menu Image" formControlName="menuImageName" (click)="fileInput.click()"
+				<input matInput placeholder="Menu Image" formControlName="menuImage" (click)="fileInput.click()"
 					required>
 				<input type="file" (change)="onFileChange($event.target.files)" hidden multiple #fileInput>
-				<mat-error *ngIf="checkError('menuImageName')">Menu Image is required</mat-error>
+				<mat-error *ngIf="checkError('menuImage')">Menu Image is required</mat-error>
 			</mat-form-field>
 			<button mat-flat-button color="accent" type="button" (click)="fileInput.click()">
 				<mat-icon>folder</mat-icon>

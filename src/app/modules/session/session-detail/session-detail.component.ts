@@ -1,4 +1,4 @@
-import { TeaSessionModel } from './../../../model/teaSession.model';
+import { SessionModel } from './../../../model/session.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./session-detail.component.css']
 })
 export class SessionDetailComponent implements OnInit {
-	session: TeaSessionModel;
+	session: SessionModel;
 
 	constructor() { }
 
