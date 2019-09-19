@@ -21,13 +21,15 @@ export class SessionService {
 	}
 
 	public uploadImages(files: FileList) {
+		const headers = new HttpHeaders();
+		headers.append('Content-Type', 'multipart/form-data');
 		console.log(files);
 		const reqArr = [];
 		Array.from(files).map(file => reqArr.push(file));
 		reqArr.map(file => {
 			console.log(file);
 			const formData = new FormData();
-			formData.append('file', file);
+			formData.append('image', file);
 			console.log(formData);
 			this.http.post(`${SessionService.URL}/rest/session/upload`, formData).subscribe(res => {
 				console.log(res);
@@ -43,6 +45,5 @@ export class SessionService {
 	}
 
 	getPrivateSession(privateCode: string) {
-
 	}
 }

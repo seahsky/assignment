@@ -65,7 +65,7 @@ export class SessionFormComponent implements OnInit {
 
 	onSubmit() {
 		if (this.sessionForm.get('uploadedFile').value !== null) {
-			this.sessionService.uploadImages(this.sessionForm.get('uploadedFile').value);
+			// this.sessionService.uploadImages(this.sessionForm.get('uploadedFile').value);
 			const session = new SessionModel(
 				this.sessionForm.get('name').value,
 				this.sessionForm.get('description').value,
@@ -76,7 +76,7 @@ export class SessionFormComponent implements OnInit {
 				9,
 				this.sessionForm.get('password').value
 			);
-			// this.sessionService.addSession(session);
+			this.sessionService.addSession(session);
 		}
 	}
 
