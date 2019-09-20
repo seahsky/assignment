@@ -1,8 +1,10 @@
+import { SessionModel } from './../../../model/session.model';
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SessionFormComponent } from '../session-form/session-form.component';
+import { SessionService } from 'src/app/service/session.service';
 
 
 const datas = [
@@ -19,26 +21,31 @@ const datas = [
 	styleUrls: ['./session-list.component.css']
 })
 export class SessionListComponent implements OnInit {
+	sessions: SessionModel[] = [];
 	displayedColumns = [
 		'name', 'treatDate'
 	];
-	dataSource = new MatTableDataSource(datas);
+	dataSource;
 
 	constructor(
 		private router: Router,
 		private route: ActivatedRoute,
-		private dialog: MatDialog
+		private dialog: MatDialog,
+		private sessionService: SessionService
 	) { }
 
 	ngOnInit() {
+		this.sessionService.getPublicSessions().subscribe(val => {
+			this.dataSource = new MatTableDataSource(val);
+		});
 	}
 
 	filter() {
 	}
 
-	onClick() {
-		console.log(this.route);
-		this.router.navigate([{ outlets: { sub: ['./asd'] } }], { relativeTo: this.route });
+	onClick(row) {
+		console.log(row.sessionId);
+		this.router.navigate([row.sessionId], { relativeTo: this.route });
 	}
 
 	openDialog() {

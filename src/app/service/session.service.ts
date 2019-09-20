@@ -13,6 +13,10 @@ export class SessionService {
 		private http: HttpClient
 	) { }
 
+	public getPublicSessions() {
+		return this.http.get<SessionModel[]>(`${SessionService.URL}/rest/session/public`);
+	}
+
 	public addSession(session: SessionModel) {
 		const headers = new HttpHeaders();
 		headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -40,8 +44,8 @@ export class SessionService {
 		});
 	}
 
-	getSession(teaSessionId: number) {
-
+	getSession(sessionId: number) {
+		return this.http.get(`${SessionService.URL}/rest/session/${sessionId}`);
 	}
 
 	getPrivateSession(privateCode: string) {

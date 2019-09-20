@@ -12,7 +12,7 @@ export class SessionModel {
 		private sessionId?: number
 	) { }
 
-	get TeaSessionId() {
+	get SessionId() {
 		return this.sessionId;
 	}
 	get Name() {
