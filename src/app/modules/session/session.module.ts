@@ -10,6 +10,7 @@ import { SessionListComponent } from './session-list/session-list.component';
 import { SessionComponent } from './session.component';
 import { SessionDetailComponent } from './session-detail/session-detail.component';
 import { OrderModule } from '../order/order.module';
+import { OrderFormComponent } from '../order/order-form/order-form.component';
 
 
 @NgModule({
@@ -25,6 +26,9 @@ import { OrderModule } from '../order/order.module';
 		CoreModule,
 		OrderModule,
 		SessionRoutingModule
+	],
+	entryComponents: [
+		OrderFormComponent
 	],
 	exports: [
 		SessionAddDoneComponent,
