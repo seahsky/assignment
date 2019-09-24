@@ -24,16 +24,17 @@ import { OrderFormComponent } from '../order/order-form/order-form.component';
 	imports: [
 		CommonModule,
 		CoreModule,
-		OrderModule,
 		SessionRoutingModule
 	],
-	entryComponents: [
-		OrderFormComponent
-	],
+	// entryComponents: [
+	// 	OrderFormComponent
+	// ],
 	exports: [
+		SessionComponent,
 		SessionAddDoneComponent,
 		SessionFormComponent,
-		SessionListComponent
+		SessionListComponent,
+		SessionDetailComponent
 	]
 })
 export class SessionModule { }

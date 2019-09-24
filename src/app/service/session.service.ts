@@ -1,4 +1,4 @@
-import { SessionModel } from './../model/session.model';
+import { SessionModel, SessionAdapter } from './../model/session.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -10,14 +10,15 @@ export class SessionService {
 	static readonly URL = 'http://localhost:50001/tos-rest';
 
 	constructor(
-		private http: HttpClient
+		private http: HttpClient,
+		private adapter: SessionAdapter
 	) { }
 
-	public getPublicSessions() {
+	public getPublic(): Observable<SessionModel[]> {
 		return this.http.get<SessionModel[]>(`${SessionService.URL}/rest/session/public`);
 	}
 
-	public addSession(session: SessionModel) {
+	public add(session: SessionModel) {
 		const headers = new HttpHeaders();
 		headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -25,13 +26,15 @@ export class SessionService {
 	}
 
 	public uploadImages(files: FileList) {
-		const headers = new HttpHeaders();
-		headers.append('Content-Type', 'multipart/form-data');
+		// const headers = new HttpHeaders();
+		// headers.append('Content-Type', 'multipart/form-data');
 		console.log(files);
 		const reqArr = [];
 		Array.from(files).map(file => reqArr.push(file));
 		reqArr.map(file => {
 			console.log(file);
+			const headers = new HttpHeaders();
+			headers.append('Content-Type', 'multipart/form-data');
 			const formData = new FormData();
 			formData.append('image', file);
 			console.log(formData);
@@ -44,10 +47,15 @@ export class SessionService {
 		});
 	}
 
-	getSession(sessionId: number) {
-		return this.http.get(`${SessionService.URL}/rest/session/${sessionId}`);
+	get(sessionId: number): Observable<SessionModel> {
+		return this.http.get<SessionModel>(`${SessionService.URL}/rest/session/${sessionId}`);
 	}
 
-	getPrivateSession(privateCode: string) {
+	getPrivate(privateCode: string): Observable<SessionModel> {
+		return this.http.get<SessionModel>(`${SessionService.URL}/rest/session/get/${privateCode}`);
+	}
+
+	delete(): void {
+
 	}
 }

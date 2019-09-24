@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
 	declarations: [
 	],

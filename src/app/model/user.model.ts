@@ -1,33 +1,26 @@
+import { Adapter } from './../interface/adapter';
 export class UserModel {
 	constructor(
-		private UserId: number,
-		private Username: string,
-		private Password: string,
-		private Enabled: boolean,
-		private LastLogin: Date,
-		private IsAdmin: boolean,
-		private Token: string
+		public userId: number,
+		public username: string,
+		public password: string,
+		public enabled: boolean,
+		public lastLogin: Date,
+		public isAdmin: boolean,
+		public token: string
 	) { }
+}
 
-	get userId() {
-		return this.UserId;
-	}
-	get username() {
-		return this.Username;
-	}
-	get password() {
-		return this.Password;
-	}
-	get enabled() {
-		return this.Enabled;
-	}
-	get lastLogin() {
-		return this.LastLogin;
-	}
-	get isAdmin() {
-		return this.IsAdmin;
-	}
-	get token() {
-		return this.Token;
+export class UserAdapter implements Adapter<UserModel> {
+	adapt(item: UserModel): UserModel {
+		return new UserModel(
+			item.userId,
+			item.username,
+			item.password,
+			item.enabled,
+			item.lastLogin,
+			item.isAdmin,
+			item.token
+		);
 	}
 }

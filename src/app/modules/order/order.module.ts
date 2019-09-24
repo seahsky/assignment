@@ -21,6 +21,7 @@ import { OrderComponent } from './order.component';
 		OrderRoutingModule
 	],
 	exports: [
+		OrderComponent,
 		OrderFormComponent,
 		OrderListComponent
 	]

@@ -1,25 +1,25 @@
+import { Adapter } from './../interface/adapter';
 export class OrderModel {
 	constructor(
-		private OrderId: number,
-		private ItemName: string,
-		private Quantity: number,
-		private Remark: string,
-		private TeaSession: number
+		public orderId: number,
+		public itemName: string,
+		public quantity: number,
+		public remark: string,
+		public session: number,
+		public createdBy: number
 	) { }
+}
 
-	get orderId() {
-		return this.OrderId;
-	}
-	get itemName() {
-		return this.ItemName;
-	}
-	get quantity() {
-		return this.Quantity;
-	}
-	get remark() {
-		return this.Remark;
-	}
-	get teaSession() {
-		return this.TeaSession;
+export class OrderAdapter implements Adapter<OrderModel> {
+	adapt(item: any): OrderModel {
+		return new OrderModel(
+			item.orderId,
+			item.itemName,
+			item.quantity,
+			item.remark,
+			item.session,
+			item.createdBy
+		);
 	}
 }
+
