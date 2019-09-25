@@ -1,5 +1,4 @@
 import { Adapter } from './../interface/adapter';
-import { UserModel } from './user.model';
 export class SessionModel {
 	constructor(
 		public sessionId: number,
@@ -9,7 +8,7 @@ export class SessionModel {
 		public cutoffDate: Date,
 		public menuImage: string,
 		public isPrivate: boolean,
-		public createdBy: UserModel,
+		public createdBy: number,
 		public password: string,
 		public privateCode: string
 	) { }

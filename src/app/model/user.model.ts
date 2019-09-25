@@ -1,4 +1,6 @@
+import { SessionModel } from './session.model';
 import { Adapter } from './../interface/adapter';
+import { OrderModel } from './order.model';
 export class UserModel {
 	constructor(
 		public userId: number,
@@ -7,7 +9,9 @@ export class UserModel {
 		public enabled: boolean,
 		public lastLogin: Date,
 		public isAdmin: boolean,
-		public token: string
+		public token: string,
+		public sessions?: SessionModel[],
+		public orders?: OrderModel[]
 	) { }
 }
 

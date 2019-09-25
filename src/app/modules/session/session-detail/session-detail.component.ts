@@ -23,7 +23,7 @@ export class SessionDetailComponent implements OnInit {
 
 	async ngOnInit() {
 		const id = this.route.snapshot.params.id;
-		await this.sessionService.getSession(id).subscribe(res => {
+		await this.sessionService.get(id).subscribe(res => {
 			this.session = res;
 		},
 			err => err);

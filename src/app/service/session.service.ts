@@ -14,15 +14,30 @@ export class SessionService {
 		private adapter: SessionAdapter
 	) { }
 
-	public getPublic(): Observable<SessionModel[]> {
-		return this.http.get<SessionModel[]>(`${SessionService.URL}/rest/session/public`);
-	}
-
 	public add(session: SessionModel) {
 		const headers = new HttpHeaders();
 		headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
 		return this.http.post(`${SessionService.URL}/rest/session/add`, session, { headers }).subscribe(r => { console.log(r); });
+	}
+
+	public getPublic(): Observable<SessionModel[]> {
+		return this.http.get<SessionModel[]>(`${SessionService.URL}/rest/session/public`);
+	}
+
+	public get(sessionId: number): Observable<SessionModel> {
+		return this.http.get<SessionModel>(`${SessionService.URL}/rest/session/${sessionId}`);
+	}
+
+	public getPrivate(privateCode: string): Observable<SessionModel> {
+		return this.http.get<SessionModel>(`${SessionService.URL}/rest/session/get/${privateCode}`);
+	}
+
+	public update(session: SessionModel) {
+	}
+
+	public delete(sessionId: number): void {
+		// return this.http.post
 	}
 
 	public uploadImages(files: FileList) {
@@ -45,17 +60,5 @@ export class SessionService {
 					console.log(err);
 				});
 		});
-	}
-
-	get(sessionId: number): Observable<SessionModel> {
-		return this.http.get<SessionModel>(`${SessionService.URL}/rest/session/${sessionId}`);
-	}
-
-	getPrivate(privateCode: string): Observable<SessionModel> {
-		return this.http.get<SessionModel>(`${SessionService.URL}/rest/session/get/${privateCode}`);
-	}
-
-	delete(): void {
-
 	}
 }

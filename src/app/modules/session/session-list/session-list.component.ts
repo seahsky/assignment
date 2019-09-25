@@ -35,7 +35,7 @@ export class SessionListComponent implements OnInit {
 	) { }
 
 	ngOnInit() {
-		this.sessionService.getPublicSessions().subscribe(val => {
+		this.sessionService.getPublic().subscribe(val => {
 			this.dataSource = new MatTableDataSource(val);
 		});
 	}
